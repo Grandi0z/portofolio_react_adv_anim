@@ -3,6 +3,7 @@ import './contact.scss'
 import emailjs from '@emailjs/browser'
 import Loader from 'react-loaders'
 import AnimatedLetters from '../AnimatedLetters/AnimatedLetters'
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
 const Contact = () => {
     const [letterClass, setLetterClass] = useState('text-animate')
     const refForm = useRef()
@@ -69,6 +70,23 @@ const Contact = () => {
                         </ul>
                     </form>
                 </div>
+            </div>
+            <div className='info-map'>
+                Joseph Kausi
+                <br />
+                DRC
+                <br />
+                Keshero, Du sport, 94 <br />
+                Goma <br />
+                <span>josephlkausi@gmail.com</span>
+            </div>
+            <div className='map-wrap'>
+                    <MapContainer center={[-1.664266, 29.178184]} zoom={13}>
+                        <TileLayer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
+                        <Marker position={[-1.664266, 29.178184]}>
+                            <Popup>Joseph lives here, come over for a cup of coffee 😊</Popup>
+                        </Marker>
+                    </MapContainer>
             </div>
         </div>
         <Loader type="pacman" />
